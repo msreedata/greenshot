@@ -675,6 +675,44 @@ namespace Greenshot.Editor.Forms
             // The BeginInvoke is a solution for the printdialog not having focus
             BeginInvoke((MethodInvoker) delegate { DestinationHelper.ExportCapture(true, WellKnownDestinations.Printer, _surface, _surface.CaptureDetails); });
         }
+        
+        private void BtnDeleteFileClick(object sender, EventArgs e)  
+        {  
+            string filePath = _surface.LastSaveFullPath ?? _surface.CaptureDetails.Filename;  
+              
+            if (string.IsNullOrEmpty(filePath))  
+            {  
+                MessageBox.Show("No file path available for deletion.");  
+                return;  
+            }  
+              
+            var result = MessageBox.Show(  
+                $"Are you sure you want to delete this file?\n\n{filePath}",  
+                "Confirm Delete",  
+                MessageBoxButtons.YesNo,  
+                MessageBoxIcon.Warning  
+            );  
+              
+            if (result == DialogResult.Yes)  
+            {  
+                try  
+                {  
+                    File.Delete(filePath);  
+                    MessageBox.Show("File deleted successfully.");  
+                      
+                    // Clear the path after deletion  
+                    _surface.LastSaveFullPath = null;  
+                    _surface.CaptureDetails.Filename = null;  
+                      
+                    // Optionally close the editor or clear the image  
+                    Close();  
+                }  
+                catch (Exception ex)  
+                {  
+                    MessageBox.Show($"Failed to delete file: {ex.Message}");  
+                }  
+            }  
+        }
 
         private void CloseToolStripMenuItemClick(object sender, EventArgs e)
         {
