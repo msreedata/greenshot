@@ -139,6 +139,7 @@ namespace Greenshot.Editor.Forms
 			this.btnRedo = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnSettings = new GreenshotToolStripButton();
+			this.btnDeleteFile = new GreenshotToolStripButton();
 			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnHelp = new GreenshotToolStripButton();
@@ -913,6 +914,7 @@ namespace Greenshot.Editor.Forms
 									this.btnRedo,
 									this.toolStripSeparator6,
 									this.btnSettings,
+                                    this.btnDeleteFile,
 									this.toolStripSeparator11,
 									this.toolStripSeparator16,
 									this.btnHelp});
@@ -1024,6 +1026,15 @@ namespace Greenshot.Editor.Forms
 			this.btnSettings.Name = "btnSettings";
 			this.btnSettings.Click += new System.EventHandler(this.BtnSettingsClick);
 			// 
+            // btnDeleteFile  
+            //  
+            this.btnDeleteFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;  
+            this.btnDeleteFile.Enabled = true;  
+            this.btnDeleteFile.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteFile.Image")));  
+            this.btnDeleteFile.ImageTransparentColor = System.Drawing.Color.Magenta;  
+            this.btnDeleteFile.LanguageKey = "editor_deletefile";  
+            this.btnDeleteFile.Name = "btnDeleteFile";  
+            this.btnDeleteFile.Click += new System.EventHandler(this.BtnDeleteFileClick);          
 			// toolStripSeparator11
 			// 
 			this.toolStripSeparator11.Name = "toolStripSeparator11";
